@@ -1,30 +1,66 @@
 package ucsal.br;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Node {
+    private Double multiplerExpression;
+    private Double nValueMultiplerNumerator;
+    private Double nValueMultiplerDenominator;
+    private List<Node> childers;
 
-    private String funcition;
-    private List<Node> childrens;
+    public String getExpression(){
+        String expression = "T(n * " + getNValueMultipler();
 
-    public Node(String funcition, List<Node> childrens) {
-        this.funcition = funcition;
-        this.childrens = childrens;
+        if(multiplerExpression > 1) {
+            expression = multiplerExpression + " " + expression;
+        }
+
+        return expression + ")";
     }
 
-    public String getFuncition() {
-        return funcition;
+    public String getNValueMultipler() {
+        String nValueMultipler = "n * " + nValueMultiplerNumerator;
+        if(nValueMultiplerDenominator > 1){
+            nValueMultipler = nValueMultipler +"/" + nValueMultiplerDenominator;
+        }
+        return nValueMultipler;
     }
 
-    public void setFuncition(String funcition) {
-        this.funcition = funcition;
+
+    public Node() {
+        this.childers = new ArrayList<>();
     }
 
-    public List<Node> getChildrens() {
-        return childrens;
+    public List<Node> getChilders() {
+        return childers;
     }
 
-    public void setChildrens(List<Node> childrens) {
-        this.childrens = childrens;
+    public void setChilders(List<Node> childers) {
+        this.childers = childers;
+    }
+
+    public Double getMultiplerExpression() {
+        return multiplerExpression;
+    }
+
+    public void setMultiplerExpression(Double multiplerExpression) {
+        this.multiplerExpression = multiplerExpression;
+    }
+
+    public Double getnValueMultiplerNumerator() {
+        return nValueMultiplerNumerator;
+    }
+
+    public void setnValueMultiplerNumerator(Double nValueMultiplerNumerator) {
+        this.nValueMultiplerNumerator = nValueMultiplerNumerator;
+    }
+
+    public Double getnValueMultiplerDenominator() {
+        return nValueMultiplerDenominator;
+    }
+
+    public void setnValueMultiplerDenominator(Double nValueMultiplerDenominator) {
+        this.nValueMultiplerDenominator = nValueMultiplerDenominator;
     }
 }
