@@ -10,7 +10,7 @@ public class Node {
     private List<Node> childers;
 
     public String getExpression(){
-        String expression = "T(n * " + getNValueMultipler();
+        String expression = "T(" + getNValueMultipler();
 
         if(multiplerExpression > 1) {
             expression = multiplerExpression + " " + expression;

@@ -28,7 +28,7 @@ public class HeadNode {
     }
 
     public static String getConstant() {
-        return "c";
+        return "n";
 
     }
 
