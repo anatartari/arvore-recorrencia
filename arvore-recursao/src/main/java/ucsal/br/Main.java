@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Integer.parseInt;
+
 /*
         1 - Receber Recursão - OK
         2 - Tirando a recursão o que sobra? c.n (nível 0) - OK
@@ -30,13 +32,9 @@ public class Main {
         System.out.println("--------------------------");
         System.out.println();
         System.out.println("digite o valor de Y: ");
-        input = reader.readLine();
+        String y = reader.readLine();
 
-        if (input.isBlank() || input.isEmpty()) {
-            node.setMultiplyExpression(1D);
-        } else {
-            node.setMultiplyExpression(Double.parseDouble(input));
-        }
+        node.setMultiplyExpression(Integer.parseInt(y));
 
         System.out.println();
         System.out.println("--------------------------");
@@ -68,6 +66,7 @@ public class Main {
         System.out.println("levelCountExpression: " + levelCountExpression);
         System.out.println("workExpression: " + workExpression);
 
+        printTreeAndData(headNode);
     }
 
     private static String getWorkExpression(HeadNode headNode) {
@@ -98,7 +97,36 @@ public class Main {
                 headNode.getChild().getnValueMultiplyNumerator().toString();
     }
 
+    private static void printTreeAndData(HeadNode headNode) {
+        StringBuilder levelString = new StringBuilder();
+        int level = 0;
+        int numNodes = 1;
+        Double nodeWorkValue = 0.0;
+        String nodeWork = "cn";
+        String recursiveCall = "T(n)";
+        String sumOfLevelWork = "cn";
 
+        System.out.println();
+        System.out.println("Tree:");
+        for (; level < 3; level++) {
+            if (level != 0) {
+                numNodes = (int) Math.pow(headNode.getChild().getMultiplyExpression(), level);
+                nodeWorkValue = Math.pow(headNode.getChild().getnValueMultiplyNumerator()/headNode.getChild().getnValueMultiplyDenominator(), level);
+                nodeWork = "c*" + nodeWorkValue + "*n";
+                sumOfLevelWork = "c*" + String.format("%.2f", nodeWorkValue*numNodes) + "*n";
+                recursiveCall = "n*" + String.format("%.2f", nodeWorkValue);
+            };
+
+            System.out.println("Level " + level);
+            levelString.append(("|" + nodeWork + "|").repeat(numNodes));
+            System.out.println(levelString);
+            System.out.println("Nodes: " + numNodes);
+            System.out.println("Sum Of Work: " + sumOfLevelWork);
+            System.out.println("Recursive Call: " + recursiveCall);
+            levelString.setLength(0);
+            System.out.println();
+        }
+    };
 
 
 }

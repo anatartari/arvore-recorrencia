@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Node {
-    private Double multiplyExpression;
+    private Integer multiplyExpression;
     private Double nValueMultiplyNumerator;
     private Double nValueMultiplyDenominator;
     private List<Node> childers;
@@ -44,11 +44,11 @@ public class Node {
         this.childers = childers;
     }
 
-    public Double getMultiplyExpression() {
+    public Integer getMultiplyExpression() {
         return multiplyExpression;
     }
 
-    public void setMultiplyExpression(Double multiplyExpression) {
+    public void setMultiplyExpression(Integer multiplyExpression) {
         this.multiplyExpression = multiplyExpression;
     }
 
